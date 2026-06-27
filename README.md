@@ -4,9 +4,17 @@ A one-shot terminal setup script for Linux (Debian/Ubuntu) that installs a full 
 
 ## Install
 
+Download the script, then run it as a file. (Running a file keeps the script
+off of `bash`'s stdin, so installers like Homebrew/Oh-My-Zsh can't accidentally
+consume it and skip the rest of the steps.)
+
 ```bash
-curl -fsSL https://raw.githubusercontent.com/AloyBranCheung/terminal-setup/main/terminal-setup.sh | bash
+curl -fsSL https://raw.githubusercontent.com/AloyBranCheung/terminal-setup/main/terminal-setup.sh -o terminal-setup.sh
+bash terminal-setup.sh
 ```
+
+> The piped one-liner (`curl ... | bash`) also works now that the script guards
+> its stdin, but downloading first is the more robust approach.
 
 ## What gets installed
 
