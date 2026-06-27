@@ -13,8 +13,8 @@ sudo apt-get install -y build-essential procps curl file git
 echo ""
 echo ">>> [3/14] Installing Homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-echo >> /home/test/.bashrc
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"' >> /home/test/.bashrc
+echo >> "$HOME/.bashrc"
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"' >> "$HOME/.bashrc"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 sudo apt-get install -y build-essential bubblewrap
 
