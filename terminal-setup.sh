@@ -86,6 +86,7 @@ brew install jump < /dev/null
 
 echo ""
 echo ">>> [15/15] Installing Neovim + NvChad..."
+brew install ripgrep 
 brew install neovim < /dev/null
 # Clone the starter config; launch nvim manually afterward to complete setup
 [ -d "$HOME/.config/nvim" ] || git clone https://github.com/NvChad/starter "$HOME/.config/nvim"
