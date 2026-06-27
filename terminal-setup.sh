@@ -14,7 +14,7 @@ echo ""
 echo ">>> [3/14] Installing Homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
-sudo apt-get install build-essential bubblewrap
+sudo apt-get install -y build-essential bubblewrap
 
 echo ""
 echo ">>> [4/14] Installing Rust..."
