@@ -17,19 +17,19 @@ trap 'echo "" >&2; echo "!!! Setup FAILED at line ${LINENO} (exit $?)." >&2; ech
 
 echo ""
 echo ">>> [1/15] Updating package lists..."
-sudo apt update < /dev/null
+sudo apt update </dev/null
 
 echo ""
 echo ">>> [2/15] Installing Homebrew prerequisites..."
-sudo apt-get install -y build-essential procps curl file git < /dev/null
+sudo apt-get install -y build-essential procps curl file git </dev/null
 
 echo ""
 echo ">>> [3/15] Installing Homebrew..."
-NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" < /dev/null
-echo >> "$HOME/.bashrc"
-echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"' >> "$HOME/.bashrc"
+NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" </dev/null
+echo >>"$HOME/.bashrc"
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"' >>"$HOME/.bashrc"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
-sudo apt-get install -y build-essential bubblewrap < /dev/null
+sudo apt-get install -y build-essential bubblewrap </dev/null
 
 echo ""
 echo ">>> [4/15] Installing Rust..."
@@ -42,32 +42,32 @@ curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-
 
 echo ""
 echo ">>> [6/15] Installing Zellij (terminal multiplexer)..."
-cargo binstall --no-confirm zellij < /dev/null
+cargo binstall --no-confirm zellij </dev/null
 
 echo ""
 echo ">>> [7/15] Installing gitui (git TUI)..."
-brew install gitui < /dev/null
+brew install gitui </dev/null
 
 echo ""
 echo ">>> [8/15] Installing oxker (Docker TUI)..."
-cargo install oxker < /dev/null
+cargo install oxker </dev/null
 
 echo ""
 echo ">>> [9/15] Installing btop (system monitor)..."
-brew install btop < /dev/null
+brew install btop </dev/null
 
 echo ""
 echo ">>> [10/15] Installing bat (better cat)..."
 # Note: on Debian/Ubuntu the binary is installed as 'batcat', not 'bat'
-sudo apt install -y bat < /dev/null
+sudo apt install -y bat </dev/null
 
 echo ""
 echo ">>> [11/15] Installing Zsh..."
-sudo apt install -y zsh < /dev/null
+sudo apt install -y zsh </dev/null
 
 echo ""
 echo ">>> [12/15] Installing Oh My Zsh..."
-RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended < /dev/null
+RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended </dev/null
 
 echo ""
 echo ">>> [13/15] Installing Zsh plugins and theme..."
@@ -82,15 +82,14 @@ echo "    - powerlevel10k theme"
 
 echo ""
 echo ">>> [14/15] Installing jump (directory navigation)..."
-brew install jump < /dev/null
+brew install jump </dev/null
 
 echo ""
 echo ">>> [15/15] Installing Neovim + NvChad..."
-brew install ripgrep 
-brew install neovim < /dev/null
+brew install ripgrep
+brew install neovim </dev/null
 # Clone the starter config; launch nvim manually afterward to complete setup
 [ -d "$HOME/.config/nvim" ] || git clone https://github.com/NvChad/starter "$HOME/.config/nvim"
-
 
 # Done!
 echo ""
