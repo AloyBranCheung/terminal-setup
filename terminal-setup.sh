@@ -106,7 +106,7 @@ echo "       ZSH_THEME=\"powerlevel10k/powerlevel10k\""
 echo "       plugins=(git zsh-autosuggestions zsh-syntax-highlighting)"
 echo ""
 echo "  3. Enable jump by adding this line to ~/.zshrc:"
-echo '       eval "$(jump shell)"'
+echo '       eval "$(jump shell zsh)"'
 echo ""
 echo "  4. On Debian/Ubuntu, bat is installed as 'batcat'."
 echo "     Add this alias to ~/.zshrc if you want to use 'bat':"
