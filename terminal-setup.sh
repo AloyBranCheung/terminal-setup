@@ -13,6 +13,8 @@ sudo apt-get install -y build-essential procps curl file git
 echo ""
 echo ">>> [3/14] Installing Homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+echo >> /home/test/.bashrc
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"' >> /home/test/.bashrc
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 sudo apt-get install -y build-essential bubblewrap
 
@@ -27,7 +29,7 @@ curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-
 
 echo ""
 echo ">>> [6/14] Installing Zellij (terminal multiplexer)..."
-cargo binstall zellij
+cargo binstall --no-confirm zellij
 
 echo ""
 echo ">>> [7/14] Installing gitui (git TUI)..."
