@@ -3,15 +3,15 @@
 set -e
 
 echo ""
-echo ">>> [1/14] Updating package lists..."
+echo ">>> [1/15] Updating package lists..."
 sudo apt update
 
 echo ""
-echo ">>> [2/14] Installing Homebrew prerequisites..."
+echo ">>> [2/15] Installing Homebrew prerequisites..."
 sudo apt-get install -y build-essential procps curl file git
 
 echo ""
-echo ">>> [3/14] Installing Homebrew..."
+echo ">>> [3/15] Installing Homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 echo >> "$HOME/.bashrc"
 echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"' >> "$HOME/.bashrc"
@@ -19,38 +19,38 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv bash)"
 sudo apt-get install -y build-essential bubblewrap
 
 echo ""
-echo ">>> [4/14] Installing Rust..."
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+echo ">>> [4/15] Installing Rust..."
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 source "$HOME/.cargo/env"
 
 echo ""
-echo ">>> [5/14] Installing cargo-binstall..."
+echo ">>> [5/15] Installing cargo-binstall..."
 curl -L --proto '=https' --tlsv1.2 -sSf https://raw.githubusercontent.com/cargo-bins/cargo-binstall/main/install-from-binstall-release.sh | bash
 
 echo ""
-echo ">>> [6/14] Installing Zellij (terminal multiplexer)..."
+echo ">>> [6/15] Installing Zellij (terminal multiplexer)..."
 cargo binstall --no-confirm zellij
 
 echo ""
-echo ">>> [7/14] Installing gitui (git TUI)..."
+echo ">>> [7/15] Installing gitui (git TUI)..."
 brew install gitui
 
 echo ""
-echo ">>> [8/14] Installing oxker (Docker TUI)..."
+echo ">>> [8/15] Installing oxker (Docker TUI)..."
 cargo install oxker
 
 echo ""
-echo ">>> [9/14] Installing btop (system monitor)..."
+echo ">>> [9/15] Installing btop (system monitor)..."
 brew install btop
 
 echo ""
-echo ">>> [10/14] Installing bat (better cat)..."
+echo ">>> [10/15] Installing bat (better cat)..."
 # Note: on Debian/Ubuntu the binary is installed as 'batcat', not 'bat'
 sudo apt install -y bat
 
 echo ""
 echo ">>> [11/15] Installing Zsh..."
-brew install zsh
+sudo apt install -y zsh
 
 echo ""
 echo ">>> [12/15] Installing Oh My Zsh..."
@@ -59,13 +59,13 @@ RUNZSH=no CHSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/
 echo ""
 echo ">>> [13/15] Installing Zsh plugins and theme..."
 echo "    - zsh-autosuggestions"
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+[ -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions" ] || git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 echo "    - zsh-syntax-highlighting"
-git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+[ -d "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting" ] || git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
 echo "    - powerlevel10k theme"
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
+[ -d "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k" ] || git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k"
 
 echo ""
 echo ">>> [14/15] Installing jump (directory navigation)..."
@@ -75,7 +75,7 @@ echo ""
 echo ">>> [15/15] Installing Neovim + NvChad..."
 brew install neovim
 # Clone the starter config; launch nvim manually afterward to complete setup
-git clone https://github.com/NvChad/starter ~/.config/nvim
+[ -d ~/.config/nvim ] || git clone https://github.com/NvChad/starter ~/.config/nvim
 
 
 # Done!
